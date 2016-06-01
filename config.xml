@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.tecdo-gt.sentinel" version="0.0.1">
   <name>Sentinel App</name>
   <description>Aplicacion Control del porducto Sentinel</description>
-  <author href="http://tecdogt.com" email="info@tecdogt.com">TecDo S.A.</author>
+  <author href="http://tecdogt.com" email="info@tecdogt.com">TecDo S.A. GT</author>
   <content src="index.html"/>
   <preference name="phonegap-version" value="3.7.0" />
   
