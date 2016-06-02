@@ -52,7 +52,7 @@
 
     </div>
     <div id="inicio" data-role="page">
-       <div data-role="popup" data-corners="false" data-tolerance="0,0" shadow="false" id="popuppanel1">
+       <div data-role="popup" data-corners="false" data-tolerance="0,0" shadow="false" class="popuppanel">
            <ul data-role="listview">
                <li data-icon="power">
                    <a href="" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
@@ -70,7 +70,7 @@
        </div>
         <div data-role="header" data-position="fixed">
             <center styel="background-color:black"><img id="ima" style="width:80%" src="img/tecdo.png"></center>
-            <a href="#popuppanel1" data-rel="popup" data-transition="slide" data-role="button" id="popupmenu">Men&uacute;</a>
+            <a href="#popuppanel1" data-rel="popup" data-transition="slide" data-role="button" class="popupmenu">Men&uacute;</a>
         </div>
         <div data-role="content">
             <center>
@@ -87,8 +87,25 @@
     
        <!--menu de opciones-->
    <div id="mopciones" data-role="page">
+       <div data-role="popup" data-corners="false" data-tolerance="0,0" shadow="false" class="popuppanel">
+           <ul data-role="listview">
+               <li data-icon="power">
+                   <a href="" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
+               </li>
+               <li data-icon="refresh">
+                   <a href="">Refrescar</a>
+               </li>
+               <li data-icon="gear">
+                   <a href="#mopciones">Opciones</a>
+               </li>
+               <li>
+                   <a href="">Salir</a>
+               </li>
+           </ul>
+       </div>
         <div data-role="header" data-position="fixed">
             <center styel="background-color:black"><img id="ima" style="width:80%" src="img/tecdo.png"></center>
+            <a href="#popuppanel1" data-rel="popup" data-transition="slide" data-role="button" class="popupmenu">Men&uacute;</a>
         </div>
         <div data-role="content">
             <a href="#nombredispositivo"><button id="button2">Editar nombre de dispositivo</button></a>

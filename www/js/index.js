@@ -5,11 +5,11 @@ $(document).ready(function(){
        
     });
     
-    $( "#popuppanel1" ).on({
+    $( ".popuppanel" ).on({
         popupbeforeposition: function() {
             var h = $( window ).height();
 
-            $( "#popuppanel1" ).css( "height", h );
+            $( ".popuppanel1" ).css( "height", h );
         }
         
     });
