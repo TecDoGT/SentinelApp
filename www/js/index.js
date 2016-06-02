@@ -10,7 +10,7 @@ $(document).ready(function(){
         popupbeforeposition: function() {
             var h = $( window ).height();
 
-            $( "#popupPanel" ).css( "height", h );
+            $( "#popuppanel1" ).css( "height", h );
         }
     });
 });
