@@ -53,7 +53,7 @@
     </div>
     <div id="inicio" data-role="page">
 
-       <div data-role="panel" id="popuppanel1">
+       <div data-role="panel" id="popuppanel1" data-display="overlay">
  
            <ul data-role="listview">
                <li >
@@ -72,9 +72,9 @@
        </div>
         
         <div data-role="header" data-position="fixed">
-            <center styel="background-color:black"><img id="ima" style="width:80%" src="img/tecdo.png"></center>
+            <center styel="background-color:black"><img id="ima" style="width:65%" src="img/tecdo.png"></center>
 
-            <a href="#popuppanel1" data-role="button" id="popupmenu">Men&uacute;</a>
+            <a href="#popuppanel1" data-role="button" data-icon="bars" id="popupmenu">Men&uacute;</a>
 
         </div>
         <div data-role="content">
@@ -92,10 +92,11 @@
     
        <!--menu de opciones-->
    <div id="mopciones" data-role="page">
-       <div data-role="popup" data-corners="false" data-tolerance="0,0" shadow="false" class="popuppanel">
+      <div data-role="panel" id="popuppanel2" data-display="overlay">
+ 
            <ul data-role="listview">
-               <li data-icon="power">
-                   <a href="" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
+               <li >
+                   <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
                    <a href="">Refrescar</a>
@@ -109,8 +110,8 @@
            </ul>
        </div>
         <div data-role="header" data-position="fixed">
-            <center styel="background-color:black"><img id="ima" style="width:80%" src="img/tecdo.png"></center>
-            <a href="#popuppanel1" data-rel="popup" data-transition="slide" data-role="button" class="popupmenu">Men&uacute;</a>
+            <center styel="background-color:black"><img id="ima" style="width:65%" src="img/tecdo.png"></center>
+            <a href="#popuppanel2" data-rel="popup" data-transition="slide" data-role="button" data-icon="bars" class="popupmenu">Men&uacute;</a>
         </div>
         <div data-role="content">
             <a href="#nombredispositivo"><button id="button2">Editar nombre de dispositivo</button></a>
