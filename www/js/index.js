@@ -5,14 +5,14 @@ $(document).ready(function(){
        
     });
     
-    $( "#popuppanel1" ).on({
+   /* $( "#popuppanel1" ).on({
         popupbeforeposition: function() {
             var h = $( window ).height();
 
             $( "#popuppanel1" ).css( "height", h );
         }
         
-    });
+    });*/
 
 });
 
