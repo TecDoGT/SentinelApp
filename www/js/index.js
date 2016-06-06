@@ -15,6 +15,7 @@ $(document).ready(function(){
             } else if (data.ok == 1){
                 window.location = "#inicio";
                 alert("Bienvenido, " + username);
+                window.sessionStorage.setItem("uuidHub", codigo);
             }
         }, "json"); 
     });
@@ -25,5 +26,12 @@ $(document).ready(function(){
 document.addEventListener("backbutton", onBackKeyDown, false);
 
 function onBackKeyDown(e) {
-  e.preventDefault();
+    e.preventDefault();    
 }
+
+$(document).on("pagecreate", ".ventana",function(){       
+    var validador = window.sessionStorage.getItem("uuidHub");
+    if (validador == undefined || validador == null){
+        window.location = "#page-home";
+    }
+});
