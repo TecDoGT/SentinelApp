@@ -20,6 +20,10 @@ $(document).ready(function(){
         }, "json"); 
     });
     
+    $(".salir").click(function(){
+        window.sessionStorage.removeItem("uuidHub");
+        window.location = "#page-home";
+    });
 });
 
 
