@@ -20,8 +20,13 @@ $(document).ready(function(){
         }, "json"); 
     });
     
+    $(".refres").click(function(){
+     window.location.reload();
+ });
+    
 });
 
+ 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
