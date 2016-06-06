@@ -24,6 +24,8 @@ $(document).ready(function(){
         window.sessionStorage.removeItem("uuidHub");
         window.location = "#page-home";
     });
+    
+    
 });
 
 
@@ -32,6 +34,26 @@ document.addEventListener("backbutton", onBackKeyDown, false);
 function onBackKeyDown(e) {
     e.preventDefault();    
 }
+
+$(document).on("pagecreate", "#inicio",function(){       
+        $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
+            {
+                CMD: "ListDevice",
+                UUIDHub: window.sessionStorage.getItem("uuidHub")
+            }, function(data){
+                if (data.length > 0){
+                    for (var i = 0; i < data.length; i++){
+                        if (data[i].Estado == 0){
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png'></td>").appendTo("#tablaPrincipal");
+                        } else if (data[i].Estado == 1){
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png'></td>").appendTo("#tablaPrincipal");
+                        }
+                    }
+                } else {
+                    alert("No se encontraron dispositivos.")
+                }
+            }, "json");
+    });
 
 $(document).on("pagecreate", ".ventana",function(){       
     var validador = window.sessionStorage.getItem("uuidHub");
