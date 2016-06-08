@@ -20,6 +20,11 @@ $(document).ready(function(){
         }, "json"); 
     });
     
+
+    $(".refres").click(function(){
+     window.location.reload();
+ });
+
     $(".salir").click(function(){
         window.sessionStorage.removeItem("uuidHub");
         window.location = "#page-home";
@@ -27,6 +32,7 @@ $(document).ready(function(){
     
 });
 
+ 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
@@ -39,16 +45,28 @@ $(document).on("pagecreate", "#inicio",function(){
             {
                 CMD: "ListDevice",
                 UUIDHub: window.sessionStorage.getItem("uuidHub")
-            }, function(data){
+            }, function(data)
+               {
                 if (data.length > 0){
                     for (var i = 0; i < data.length; i++){
                         if (data[i].Estado == 0){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png' class='switch'></td>").appendTo("#tablaPrincipal");
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png' id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
                         } else if (data[i].Estado == 1){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png' class='switch'></td>").appendTo("#tablaPrincipal");
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png' id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
                         }
-                        $(".switch").click(function(){
-                            $(this).attr("src", "img/off.png");
+                        
+                        $("#" + data[i].UUIDDevice).click(function(){
+                            for (var i = 0; i < data.length; i++){
+                                if ($(this).id == data[i].UUIDevice){
+                                    if (data[i].Estado == 0){
+                                        data[i].Estado = 1;
+                                        $(this).attr("src", "img/on.png");
+                                    } else  {
+                                        data[i].Estado = 0;
+                                        $(this).attr("src", "img/off.png");
+                                    }
+                                }
+                            }
                         });
                     }
                 } else {
