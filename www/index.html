@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
     <meta charset="UTF-8" />
     <title>Sentinel app</title>
@@ -27,6 +27,7 @@
    
     
     <!--Home-->
+    
 
     
     <div id="page-home" data-role="page" >
@@ -53,6 +54,7 @@
         <!--Footer-->
 
     </div>
+    
     <div id="inicio" data-role="page" class="ventana">
 
        <div data-role="panel" id="popuppanel1" data-display="overlay">
@@ -62,7 +64,7 @@
                    <a href="" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -81,6 +83,7 @@
         </div>
         <div data-role="content">
             <center>
+
                 <table id="tablaPrincipal" border=1>
                     <tr>
                         <th>UUID</th>
@@ -102,7 +105,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -143,7 +146,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -185,7 +188,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -224,7 +227,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -264,7 +267,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -303,7 +306,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -350,7 +353,7 @@
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
                </li>
                <li data-icon="refresh">
-                   <a href="">Refrescar</a>
+                   <a href="" class="refres">Refrescar</a>
                </li>
                <li data-icon="gear">
                    <a href="#mopciones">Opciones</a>
@@ -387,5 +390,120 @@
         </div>
     </div>  
     
+    
+   <!--Paginas de edicion de horarios y permisos-->
+    
+    <!--editar los permisos de usuario-->
+    <div id="permisos" data-role="page" class="ventana">
+      <div data-role="panel" id="popuppanel8" data-display="overlay">
+ 
+           <ul data-role="listview">
+               <li >
+                   <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
+               </li>
+               <li data-icon="refresh">
+                   <a href="" class="refres">Refrescar</a>
+               </li>
+               <li data-icon="gear">
+                   <a href="#mopciones">Opciones</a>
+               </li>
+               <li>
+                   <a href="">Salir</a>
+               </li>
+           </ul>
+       </div>
+        <div data-role="header" data-position="fixed">
+
+            <center> <div class="centro">
+            <img id="ima" style="width:65%" src="img/tecdo.png">
+            </div></center>
+            
+               <div class="left">
+            <a href="#mpermisos" data-role="button" data-icon="carat-l" >Anterior</a>
+            </div>
+            <div class="right">
+              <a href="#popuppanel8" data-rel="popup" data-transition="slide" data-role="button" data-icon="bars" class="popupmenu">Men&uacute;</a>
+            </div> 
+        </div>
+        <div data-role="content">
+            <center><h1>Dispositivos</h1></center>
+            <center>
+                <table border=1 data-role="table" data-mode="columntoggle" data-column-btn-text="Columnas">
+                   <thead>
+                    <tr>
+                        <th>UUID</th>
+                        <th>Nombre</th>
+                        <th data-priority="1">Control</th>
+                        <th data-priority="2">Horario</th>                        
+                    </tr>
+                  </thead>    
+                </table>
+            </center>
+        </div>
+    </div> 
+    
+     <!--editar horarios-->
+    <div id="auto" data-role="page" class="ventana">
+      <div data-role="panel" id="popuppanel8" data-display="overlay">
+ 
+           <ul data-role="listview">
+               <li >
+                   <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
+               </li>
+               <li data-icon="refresh">
+                   <a href="" class="refres">Refrescar</a>
+               </li>
+               <li data-icon="gear">
+                   <a href="#mopciones">Opciones</a>
+               </li>
+               <li>
+                   <a href="">Salir</a>
+               </li>
+           </ul>
+       </div>
+        <div data-role="header" data-position="fixed">
+
+            <center> <div class="centro">
+            <img id="ima" style="width:65%" src="img/tecdo.png">
+            </div></center>
+            
+               <div class="left">
+            <a href="#horaauto" data-role="button" data-icon="carat-l" >Anterior</a>
+            </div>
+            <div class="right">
+              <a href="#popuppanel8" data-rel="popup" data-transition="slide" data-role="button" data-icon="bars" class="popupmenu">Men&uacute;</a>
+            </div> 
+        </div>
+        <div data-role="content">
+            <center><h1>Horarios Existentes</h1></center>
+            <center>
+                <table border=1 data-role="table" data-mode="columntoggle" data-column-btn-text="Columnas">
+                   <thead>
+                    <tr>
+                        <th >UUID</th>
+                        <th >Nombre</th>
+                        <th data-priority="1">Dia-Hora: Minuto</th>           
+                        <th data-priority="2">Accion</th> 
+                        <th data-priority="3">Eliminar</th> 
+                    </tr>
+                  </thead>    
+                </table>
+            </center>
+            <center><h1>Nuevo Horario</h1></center>
+            <center>
+                <table border=1 data-role="table" data-mode="columntoggle" data-column-btn-text="Columnas">
+                   <thead>
+                    <tr>
+                        <th >UUID</th>
+                        <th >Nombre</th>
+                        <th data-priority="1">Dia-Hora: Minuto</th>                   
+                        <th data-priority="2">Accion</th> 
+                        <th data-priority="3">Agregar</th> 
+                    </tr>
+                  </thead>    
+                </table>
+            </center>
+        </div>
+    </div> 
 </body>
 </html>  

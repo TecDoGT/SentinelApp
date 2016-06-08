@@ -20,14 +20,21 @@ $(document).ready(function(){
         }, "json"); 
     });
     
+
+    $(".refres").click(function(){
+     window.location.reload();
+ });
+
     $(".salir").click(function(){
         window.sessionStorage.removeItem("uuidHub");
         window.location = "#page-home";
     });
     
+
     
 });
 
+ 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
