@@ -25,7 +25,6 @@ $(document).ready(function(){
         window.location = "#page-home";
     });
     
-    
 });
 
 
@@ -44,10 +43,13 @@ $(document).on("pagecreate", "#inicio",function(){
                 if (data.length > 0){
                     for (var i = 0; i < data.length; i++){
                         if (data[i].Estado == 0){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png'></td>").appendTo("#tablaPrincipal");
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png' class='switch'></td>").appendTo("#tablaPrincipal");
                         } else if (data[i].Estado == 1){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png'></td>").appendTo("#tablaPrincipal");
+                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png' class='switch'></td>").appendTo("#tablaPrincipal");
                         }
+                        $(".switch").click(function(){
+                            $(this).attr("src", "img/off.png");
+                        });
                     }
                 } else {
                     alert("No se encontraron dispositivos.")
@@ -60,4 +62,6 @@ $(document).on("pagecreate", ".ventana",function(){
     if (validador == undefined || validador == null){
         window.location = "#page-home";
     }
+    
+    
 });
