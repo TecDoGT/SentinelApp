@@ -11,14 +11,36 @@ $(document).ready(function(){
             pwd: password
         }, function(data){
             if (data.ok == 0){
-                alert("Revise sus datos");
+                new Messi("Revise sus datos", {
+                    title: "Sentinel App",
+                    titleClass: "anim error",
+                    buttons: [{
+                        id: 0,
+                        label: "Aceptar",
+                        val: "X"
+                    }],
+                    modal: true,
+                    width: (window.innerWidth - 25)
+                });
             } else if (data.ok == 1){
-                window.location = "#inicio";
-                alert("Bienvenido, " + username);
-                window.sessionStorage.setItem("uuidHub", codigo);
-                window.sessionStorage.setItem("username", nombre);
-                window.sessionStorage.setItem("pwd", password);
-                window.sessionStorage.setItem("admin", data.Admin);
+                new Messi("Bienvenido, " + username, {
+                    title: "Sentinel App",
+                    titleClass: "anim success",
+                    buttons: [{
+                        id: 0,
+                        label: "Aceptar",
+                        val: "X"
+                    }],
+                    modal: true,
+                    width: (window.innerWidth - 25),
+                    callback: function(val){
+                        window.location = "#inicio";
+                        window.sessionStorage.setItem("uuidHub", codigo);
+                        window.sessionStorage.setItem("username", username);
+                        window.sessionStorage.setItem("pwd", password);
+                        window.sessionStorage.setItem("admin", data.Admin);                       
+                    }
+                });
             }
         }, "json"); 
     });
