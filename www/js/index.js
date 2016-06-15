@@ -117,23 +117,32 @@ function onBackKeyDown(e) {
                         var dispositivo=data[i].UUIDDevice;
                         
                         $("#btn_"+ data[i].UUIDDevice).click(function(){
-                            var etiqueta=$("#inpu_" + dispositivo).val();
+                            
+                            var  disp = $(this).attr("id") + "";
+                            
+                            disp = disp.replace("btn", "#input");
+                            
+                            var etiqueta=$(disp).val();
+                            
+                            disp = disp.replace("#input_", "");
                             
                             $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php",
+                            {
+                                CMD:"ChangeLabelDevice",
+                                UUIDHub:window.sessionStorage.getItem("uuidHub"),
+                                UUIDDevice:disp,
+                                DeviceLabel:etiqueta               
+                            },
+                            function(info)
+                            {
+                                if (info.ok== 1)
                                 {
-                                    CMD:"ChangeLabelDevice",
-                                    UUIDHub:window.sessionStorage.getItem("uuidHub"),
-                                    UUIDDevice:dispositivo,
-                                    DeviceLabel:etiqueta               
-                                },
-                                function(info){
-                                if (info.ok== 1){alert("Se logro actualizar")              
-                                                }
-                                else{
-                                    alert("No se logro actualizara");
+                                    alert("Se logro actualizar")              
                                 }
-                                
-                                
+                                else
+                                {
+                                    alert("No se logro actualizara");
+                                }   
                             },"json");
                             
                         });
