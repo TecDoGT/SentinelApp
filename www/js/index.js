@@ -93,9 +93,7 @@ $(document).ready(function(){
             window.location = "#mpermisos";
         }        
     })
-});
-
- 
+}); 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
