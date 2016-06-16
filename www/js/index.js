@@ -106,7 +106,7 @@ function onBackKeyDown(e) {
 //muestra los dispositivos en la tabla de la pagina de inicio.
     $(document).on("pagecreate", "#inicio",function(){       
         $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
-            {
+            { 
                 CMD: "ListDevice",
                 UUIDHub: window.sessionStorage.getItem("uuidHub")
             }, function(data)
@@ -149,7 +149,40 @@ function onBackKeyDown(e) {
                {
                 if (data.length > 0){
                     for (var i = 0; i < data.length; i++){
-                        $("<tr style='height:50; background-color: white; text-align: center'>").html("<td style='width: 33%'>" + data[i].UUIDDevice + "</td>" + "<td style='width: 33%'><input value='" + data[i].Etiqueta + "' style='text-align: center; width: 98%''/></td>" + "<td style='width: 33%'><input type='button' value='Cambiar'></td>").appendTo("#tablaCambioNombre");
+                        $("<tr style='height:50; background-color: white; text-align: center'>").html("<td style='width: 33%'>" + data[i].UUIDDevice + "</td>" + "<td style='width: 33%'><input id='input_"+ data[i].UUIDDevice +"' value='" + data[i].Etiqueta + "' style='text-align: center; width: 98%''/></td>" + "<td style='width: 33%'><input type='button' id='btn_"+ data[i].UUIDDevice +"' value='Cambiar'></td>").appendTo("#tablaCambioNombre");
+                        
+                        var dispositivo=data[i].UUIDDevice;
+                        
+                        $("#btn_"+ data[i].UUIDDevice).click(function(){
+                            
+                            var  disp = $(this).attr("id") + "";
+                            
+                            disp = disp.replace("btn", "#input");
+                            
+                            var etiqueta=$(disp).val();
+                            
+                            disp = disp.replace("#input_", "");
+                            
+                            $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php",
+                            {
+                                CMD:"ChangeLabelDevice",
+                                UUIDHub:window.sessionStorage.getItem("uuidHub"),
+                                UUIDDevice:disp,
+                                DeviceLabel:etiqueta               
+                            },
+                            function(info)
+                            {
+                                if (info.ok== 1)
+                                {
+                                    alert("Se logro actualizar")              
+                                }
+                                else
+                                {
+                                    alert("No se logro actualizara");
+                                }   
+                            },"json");
+                            
+                        });
                     }
                 } else {
                     alert("No se encontraron dispositivos.")
