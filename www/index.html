@@ -33,9 +33,10 @@
     <div id="page-home" data-role="page" >
 
         <!--Header-->
+
         <div data-role="header" data-position="fixed">
             <center styel="background-color:black"><img id="ima" style="width:80%" src="img/tecdo.png"></center>  	
-            
+
         </div>
 
         <!--Content-->
@@ -130,9 +131,9 @@
         <div data-role="content">
             <a href="#nombredispositivo"><button id="button2">Editar nombre de dispositivo</button></a>
             <a href="#cambionombre"><button id="button3">Cambio de nombre de usuario</button></a>
-            <a href="#cambioclave">  <button id="button4">Cambio de clave de ingreso</button></a>
-            <a href="#crearusuario"><button id="button5">Crear un Nuevo Usuario</button></a>
-            <a href="#mpermisos"><button id="button6">Editar Permisos de Usuario</button></a>
+            <a href="#cambioclave"><button id="button4">Cambio de clave de ingreso</button></a>
+            <button id="button5">Crear un Nuevo Usuario</button>
+            <button id="button6">Editar Permisos de Usuario</button>
             <a href="#horaauto"><button id="button7">Horarios Automatizados</button></a>
         </div>
     </div>
@@ -396,8 +397,7 @@
     
     <!--editar los permisos de usuario-->
     <div id="permisos" data-role="page" class="ventana">
-      <div data-role="panel" id="popuppanel8" data-display="overlay">
- 
+      <div data-role="panel" id="popuppanel9" data-display="overlay">
            <ul data-role="listview">
                <li >
                    <a href="#inicio" data-icon="power" class="mcnegro ui-btn ui-btn-icon-right ui-icon-power" >Control</a>
@@ -414,7 +414,6 @@
            </ul>
        </div>
         <div data-role="header" data-position="fixed">
-
             <center> <div class="centro">
             <img id="ima" style="width:65%" src="img/tecdo.png">
             </div></center>
@@ -423,7 +422,7 @@
             <a href="#mpermisos" data-role="button" data-icon="carat-l" >Anterior</a>
             </div>
             <div class="right">
-              <a href="#popuppanel8" data-rel="popup" data-transition="slide" data-role="button" data-icon="bars" class="popupmenu">Men&uacute;</a>
+              <a href="#popuppanel9" data-rel="popup" data-transition="slide" data-role="button" data-icon="bars" class="popupmenu">Men&uacute;</a>
             </div> 
         </div>
         <div data-role="content">
@@ -466,8 +465,8 @@
 
             <center> <div class="centro">
             <img id="ima" style="width:65%" src="img/tecdo.png">
-            </div></center>
-            
+            </div>
+            </center>            
                <div class="left">
             <a href="#horaauto" data-role="button" data-icon="carat-l" >Anterior</a>
             </div>
