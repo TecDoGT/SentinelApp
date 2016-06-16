@@ -122,6 +122,7 @@ function onBackKeyDown(e) {
                                 if ($(this).id == data[i].UUIDevice){
                                     if (data[i].Estado == 0){
                                         data[i].Estado = 1;
+                                        alert("hola");
                                         $(this).attr("src", "img/on.png");
                                     } else  {
                                         data[i].Estado = 0;
