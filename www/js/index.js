@@ -1,3 +1,4 @@
+var permisosAdministrador;
 $(document).ready(function(){
     //login del sistema.
     $("#button1").click(function(){
@@ -34,11 +35,12 @@ $(document).ready(function(){
                     modal: true,
                     width: (window.innerWidth - 25),
                     callback: function(val){
+                        permisosAdministrador = data.Admin;
                         window.location = "#inicio";
                         window.sessionStorage.setItem("uuidHub", codigo);
                         window.sessionStorage.setItem("username", username);
                         window.sessionStorage.setItem("pwd", password);
-                        window.sessionStorage.setItem("admin", data.Admin);                       
+                        window.sessionStorage.setItem("admin", permisosAdministrador);                       
                     }
                 });
             }
@@ -56,6 +58,41 @@ $(document).ready(function(){
         window.location = "#page-home";
     });
     
+    $("#button5").click(function(){
+        if (permisosAdministrador == 0){
+            new Messi("Usted no tiene derechos de administrador.", {
+                title: "Sentinel App",
+                titleClass: "anim error",
+                buttons: [{
+                    id: 0,
+                    label: "Aceptar",
+                    val: "X"
+                }],
+                modal: true,
+                width: (window.innerWidth - 25),
+            });            
+        } else {
+            window.location = "#crearusuario";
+        }
+    });
+    
+    $("#button6").click(function(){
+        if (permisosAdministrador == 0){
+            new Messi("Usted no tiene derechos de administrador.", {
+                title: "Sentinel App",
+                titleClass: "anim error",
+                buttons: [{
+                    id: 0,
+                    label: "Aceptar",
+                    val: "X"
+                }],
+                modal: true,
+                width: (window.innerWidth - 25),
+            });            
+        } else {
+            window.location = "#mpermisos";
+        }        
+    })
 });
 
  
