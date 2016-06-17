@@ -194,6 +194,10 @@ $(document).on("pagecreate", ".ventana",function(){
     if (validador == undefined || validador == null){
         window.location = "#page-home";
     }
+    alert($("#edit1").css("height"));
     
-    
+});
+
+$(document).on("pagecreate", "#inicio", function(){
+   alert($(window).height()); 
 });
