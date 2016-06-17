@@ -122,7 +122,6 @@ function onBackKeyDown(e) {
                                 if ($(this).id == data[i].UUIDevice){
                                     if (data[i].Estado == 0){
                                         data[i].Estado = 1;
-                                        alert("hola");
                                         $(this).attr("src", "img/on.png");
                                     } else  {
                                         data[i].Estado = 0;
@@ -195,6 +194,10 @@ $(document).on("pagecreate", ".ventana",function(){
     if (validador == undefined || validador == null){
         window.location = "#page-home";
     }
+    alert($("#edit1").css("height"));
     
-    
+});
+
+$(document).on("pagecreate", "#inicio", function(){
+   alert($(window).height()); 
 });

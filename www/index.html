@@ -43,11 +43,20 @@
         <div data-role="content">
             <font color="#000469"> <center><h1>Bienvenido</h1></center> </font>
             
-          <input placeholder="Código" id="edit1"> 
-          <input placeholder="Usuario"id="edit2">
-          <input placeholder="Contraseña"id="edit3" type="password"><br/>
-          
-        <input type="button" id="button1" value="Iniciar Sesi&oacuten">
+            <table id="campos">
+                <tr>
+                    <input placeholder="Código" id="edit1"/> 
+                </tr>
+                <tr>
+                    <input placeholder="Usuario"id="edit2"/>
+                </tr>
+                <tr>
+                    <input placeholder="Contraseña"id="edit3" type="password"/>
+                </tr>
+                <tr>
+                    <input type="button" id="button1" value="Iniciar Sesi&oacuten">
+                </tr>
+            </table>
            
         </div>
        
@@ -76,7 +85,7 @@
            </ul>
        </div>
         
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" id="hdr">
             <center><img id="ima" style="width:65%" src="img/tecdo.png"></center>
 
             <a href="#popuppanel1" data-role="button" data-icon="bars" id="popupmenu">Men&uacute;</a>
