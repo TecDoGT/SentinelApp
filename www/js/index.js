@@ -93,16 +93,18 @@ $(document).ready(function(){
         } else {
             window.location = "#mpermisos";
         }        
-    })
-}); 
-
+    });
+    
     $("#button8").click(function(){ 
+        
+        var nuevousr = $("#edit4").val();
+        
         $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
             {
                 CMD: "ChangeUsrName",
                 UUIDHub: window.sessionStorage.getItem("uuidHub"),
                 UserName: window.sessionStorage.getItem("userName"),
-                NewUsr: $("edit4").val()   
+                NewUsr: nuevousr 
             }, function(data)
                {
                     if (data.ok == 0){
@@ -132,6 +134,7 @@ $(document).ready(function(){
                     }
             }, "json");
     });
+}); 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 
@@ -140,92 +143,91 @@ function onBackKeyDown(e) {
 }
 
 //muestra los dispositivos en la tabla de la pagina de inicio.
-    $(document).on("pagecreate", "#inicio",function(){       
-        $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
-            { 
-                CMD: "ListDevice",
-                UUIDHub: window.sessionStorage.getItem("uuidHub")
-            }, function(data)
-               {
-                if (data.length > 0){
-                    for (var i = 0; i < data.length; i++){
-                        if (data[i].Estado == 0){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td >" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png' )id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
-                        } else if (data[i].Estado == 1){
-                            $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png' id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
-                        }
-                        
-                        $("#" + data[i].UUIDDevice).click(function(){
-                            for (var i = 0; i < data.length; i++){
-                                if ($(this).id == data[i].UUIDevice){
-                                    if (data[i].Estado == 0){
-                                        data[i].Estado = 1;
-                                        $(this).attr("src", "img/on.png");
-                                    } else  {
-                                        data[i].Estado = 0;
-                                        $(this).attr("src", "img/off.png");
-                                    }
+$(document).on("pagecreate", "#inicio",function(){       
+    $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
+        { 
+            CMD: "ListDevice",
+            UUIDHub: window.sessionStorage.getItem("uuidHub")
+        }, function(data)
+           {
+            if (data.length > 0){
+                for (var i = 0; i < data.length; i++){
+                    if (data[i].Estado == 0){
+                        $("<tr style='height:50; background-color: white; text-align: center'>").html("<td >" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/off.png' )id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
+                    } else if (data[i].Estado == 1){
+                        $("<tr style='height:50; background-color: white; text-align: center'>").html("<td>" + data[i].UUIDDevice + "</td>" + "<td>" + data[i].Etiqueta + "</td>" + "<td><img src='img/on.png' id='"+ data[i].UUIDDevice + "' class='switch'></td>").appendTo("#tablaPrincipal");
+                    }
+
+                    $("#" + data[i].UUIDDevice).click(function(){
+                        for (var i = 0; i < data.length; i++){
+                            if ($(this).id == data[i].UUIDevice){
+                                if (data[i].Estado == 0){
+                                    data[i].Estado = 1;
+                                    $(this).attr("src", "img/on.png");
+                                } else  {
+                                    data[i].Estado = 0;
+                                    $(this).attr("src", "img/off.png");
                                 }
                             }
-                        });
-                    }
-                } else {
-                    alert("No se encontraron dispositivos.")
+                        }
+                    });
                 }
-            }, "json");
-    });
+            } else {
+                alert("No se encontraron dispositivos.")
+            }
+        }, "json");
+});
 
 //proceso para cambiarle de nombre a un dispositivo.
-    $(document).on("pagecreate", "#nombredispositivo",function(){       
-        $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
-            {
-                CMD: "ListDevice",
-                UUIDHub: window.sessionStorage.getItem("uuidHub")
-            }, function(data)
-               {
-                if (data.length > 0){
-                    for (var i = 0; i < data.length; i++){
-                        $("<tr style='height:50; background-color: white; text-align: center'>").html("<td style='width: 33%'>" + data[i].UUIDDevice + "</td>" + "<td style='width: 33%'><input id='input_"+ data[i].UUIDDevice +"' value='" + data[i].Etiqueta + "' style='text-align: center; width: 98%''/></td>" + "<td style='width: 33%'><input type='button' id='btn_"+ data[i].UUIDDevice +"' value='Cambiar'></td>").appendTo("#tablaCambioNombre");
-                        
-                        var dispositivo=data[i].UUIDDevice;
-                        
-                        $("#btn_"+ data[i].UUIDDevice).click(function(){
-                            
-                            var  disp = $(this).attr("id") + "";
-                            
-                            disp = disp.replace("btn", "#input");
-                            
-                            var etiqueta=$(disp).val();
-                            
-                            disp = disp.replace("#input_", "");
-                            
-                            $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php",
-                            {
-                                CMD:"ChangeLabelDevice",
-                                UUIDHub:window.sessionStorage.getItem("uuidHub"),
-                                UUIDDevice:disp,
-                                DeviceLabel:etiqueta               
-                            },
-                            function(info)
-                            {
-                                if (info.ok == 1)
-                                {
-                                    alert("Se logro actualizar");              
-                                }
-                                else
-                                {
-                                    alert("No se logro actualizara");
-                                }   
-                            },"json");
-                            
-                        });
-                    }
-                } else {
-                    alert("No se encontraron dispositivos.");
-                }
-            }, "json");
-    });
+$(document).on("pagecreate", "#nombredispositivo",function(){       
+    $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
+        {
+            CMD: "ListDevice",
+            UUIDHub: window.sessionStorage.getItem("uuidHub")
+        }, function(data)
+           {
+            if (data.length > 0){
+                for (var i = 0; i < data.length; i++){
+                    $("<tr style='height:50; background-color: white; text-align: center'>").html("<td style='width: 33%'>" + data[i].UUIDDevice + "</td>" + "<td style='width: 33%'><input id='input_"+ data[i].UUIDDevice +"' value='" + data[i].Etiqueta + "' style='text-align: center; width: 98%''/></td>" + "<td style='width: 33%'><input type='button' id='btn_"+ data[i].UUIDDevice +"' value='Cambiar'></td>").appendTo("#tablaCambioNombre");
 
+                    var dispositivo=data[i].UUIDDevice;
+
+                    $("#btn_"+ data[i].UUIDDevice).click(function(){
+
+                        var  disp = $(this).attr("id") + "";
+
+                        disp = disp.replace("btn", "#input");
+
+                        var etiqueta=$(disp).val();
+
+                        disp = disp.replace("#input_", "");
+
+                        $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php",
+                        {
+                            CMD:"ChangeLabelDevice",
+                            UUIDHub:window.sessionStorage.getItem("uuidHub"),
+                            UUIDDevice:disp,
+                            DeviceLabel:etiqueta               
+                        },
+                        function(info)
+                        {
+                            if (info.ok == 1)
+                            {
+                                alert("Se logro actualizar");              
+                            }
+                            else
+                            {
+                                alert("No se logro actualizara");
+                            }   
+                        },"json");
+
+                    });
+                }
+            } else {
+                alert("No se encontraron dispositivos.");
+            }
+        }, "json");
+});
 
 $(document).on("pagecreate", ".ventana",function(){       
     var validador = window.sessionStorage.getItem("uuidHub");
