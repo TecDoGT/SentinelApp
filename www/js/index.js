@@ -108,7 +108,7 @@ $(document).ready(function(){
             }, function(data)
                {
                     if (data.ok == 0){
-                            new Messi("No se pudo cambiar en nombre de usuario.", {
+                            new Messi("No se pudo cambiar el nombre de usuario.", {
                             title: "Sentinel App",
                             titleClass: "anim error",
                             buttons: [{
@@ -134,6 +134,89 @@ $(document).ready(function(){
                     }
             }, "json");
     });
+    
+    $("#button9").click(function(){
+        
+        var InputPasswd = $("#edit5").val();
+        var newPasswd = $("#edit6").val();
+        var rNewPasswd = $("#edit7").val();
+        
+        if ((InputPasswd == "") || (newPasswd == "") || (rNewPasswd == "")){
+            new Messi("Por favor, llene todos los campos.", {
+                title: "Sentinel App",
+                titleClass: "anim error",
+                buttons: [{
+                    id: 0,
+                    label: "Aceptar",
+                    val: "X"
+                }],
+                modal: true,
+                width: (window.innerWidth - 25),
+            });                         
+        } else if (InputPasswd != window.sessionStorage.getItem("pwd")){
+            new Messi("La contrase&ntilde;a actual es incorrecta.", {
+                title: "Sentinel App",
+                titleClass: "anim error",
+                buttons: [{
+                    id: 0,
+                    label: "Aceptar",
+                    val: "X"
+                }],
+                modal: true,
+                width: (window.innerWidth - 25),
+            });          
+        } else if (newPasswd != rNewPasswd){
+            new Messi("Ingrese dos veces correctamente la nueva contrase&ntilde;a.", {
+                title: "Sentinel App",
+                titleClass: "anim error",
+                buttons: [{
+                    id: 0,
+                    label: "Aceptar",
+                    val: "X"
+                }],
+                modal: true,
+                width: (window.innerWidth - 25),
+            });  
+        } else {   
+            
+            
+            $.post("http://tecdogt.com/SentinelHubWS/mediadorApp.php", 
+            {
+                CMD: "ChangePassword",
+                UUIDHub: window.sessionStorage.getItem("uuidHub"),
+                UserName: window.sessionStorage.getItem("userName"),
+                NewPass: newPasswd
+            }, function(data)
+               {
+                    if (data.ok == 0){
+                            new Messi("No se pudo cambiar la contrase&ntilde;a.", {
+                            title: "Sentinel App",
+                            titleClass: "anim error",
+                            buttons: [{
+                                id: 0,
+                                label: "Aceptar",
+                                val: "X"
+                            }],
+                            modal: true,
+                            width: (window.innerWidth - 25),
+                        });         
+                    }   else {
+                            new Messi("Se actualiz&oacute; la contrase&ntilde;a.", {
+                            title: "Sentinel App",
+                            titleClass: "anim success",
+                            buttons: [{
+                                id: 0,
+                                label: "Aceptar",
+                                val: "X"
+                            }],
+                            modal: true,
+                            width: (window.innerWidth - 25),
+                        });      
+                    }
+            }, "json");
+        }              
+    });
+    
 }); 
 
 document.addEventListener("backbutton", onBackKeyDown, false);
